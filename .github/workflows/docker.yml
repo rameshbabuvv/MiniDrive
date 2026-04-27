@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Login to Docker Hub
-        run: echo "${{ secrets.Ram3shbabuvv99 }}" | docker login -u "${{ secrets.rameshbabuvv }}" --password-stdin
+        run: echo "${{ secrets.Ram3shbabuvv99 }}" | docker login -u "${{ secrets.RAMESHBABUVV }}" --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.rameshbabuvv }}/minidrive-docker .
+        run: docker build -t ${{ secrets.RAMESHBABUVV }}/minidrive-docker .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.rameshbabuvv }}/minidrive-docker
+        run: docker push ${{ secrets.RAMESHBABUVV }}/minidrive-docker
