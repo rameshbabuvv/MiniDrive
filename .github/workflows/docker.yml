@@ -1,4 +1,4 @@
-name: CI - Build Docker Image
+name: CI - Build & Push Docker Image
 
 on:
   push:
@@ -13,12 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t minidrive .
-      - name: Run container
-        run: docker run -d -p 5000:5000 minidrive
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.Ram3shbabuvv99 }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Test app
-        run: |
-         sleep 5
-         curl http://localhost:5000
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.rameshbabuvv }}/minidrive-docker .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.rameshbabuvv }}/minidrive-docker
