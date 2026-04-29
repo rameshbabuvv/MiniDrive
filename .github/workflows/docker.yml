@@ -21,3 +21,15 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/minidrive-docker
+      
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+         host: ${{ secrets.EC2_HOST }}
+         username: ${{ secrets.EC2_USER }}
+         key: ${{ secrets.EC2_SSH_KEY }}
+         script:
+          docker pull rameshbabuvv/minidrive-docker
+          docker stop minidrive || true
+          docker rm minidrive || true
+          docker run -d -p 5000:5000 --name minidrive rameshbabuvv/minidrive-docker
