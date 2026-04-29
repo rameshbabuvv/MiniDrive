@@ -14,7 +14,7 @@ def resize_image(filepath):
 
 @app.route("/")
 def home():
-    return "MiniDrive Amazon Web Services Running"
+    return "MiniDrive Amazon Web Services AWS Running"
 
 @app.route("/upload", methods=["POST"])
 def upload():
