@@ -1,0 +1,12 @@
+
+services:
+  app1:
+    build: .
+    ports:
+      - "5000:5000"
+    command: python App.py
+  app2:
+    build: .
+    ports:
+      - "5001:5001"
+    command: python App2.py
