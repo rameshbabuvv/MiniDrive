@@ -1,12 +1,20 @@
-FROM python:3.10-slim
+FROM python:3.10-slim as base
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --user -r requirements.txt
+
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY --from=base /root/.local /root/.local
 
 COPY . .
+
+ENV PATH=/root/.local/bin:$PATH
 
 EXPOSE 5000
 
