@@ -28,7 +28,9 @@ jobs:
          host: ${{ secrets.EC2_HOST }}
          username: ${{ secrets.EC2_USER }}
          key: ${{ secrets.EC2_SSH_KEY }}
+         debug: true 
          script: |
+           echo "Connected successfully"
            sudo docker pull rameshbabuvv/minidrive-docker
            sudo docker stop minidrive || true
            sudo docker rm minidrive || true
